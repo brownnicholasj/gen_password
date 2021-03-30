@@ -94,3 +94,109 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
+function test(){
+  console.log(`Test function start`);
+    // set password variable to blank
+    var password = ``;
+
+      //  for function to figure out password
+   function generatePassword(){
+    var pwAttributes = {
+      charTypes: 'abcdefghijklmnopqrstuvwxyzABC1234!@#',
+      pwLength: 16
+    }
+    for (var i = 0; i < pwAttributes.pwLength; i++){
+      password += pwAttributes.charTypes[Math.floor(Math.random() * pwAttributes.charTypes.length)];
+    }
+    
+  }
+  generatePassword();
+  console.log(`current password var is ${password}`);
+
+  var lowercase = true;
+  var uppercase = true;
+  var numeric = true;
+  var special = true;
+
+  var lcLetters = `abcdefghijklmnopqrstuvwxyz`;
+  var ucLetters = `ABCDEFGHIJKLMNOPQRSTUVWXYZ`;
+  var numerics = `1234567890`;
+  var specChars = `!"#$%&'()*+,-./:;<=>?@[\]^_{|}~`;
+
+  var spValidator = false;
+  var lcValidator = false;
+  var ucValidator = false;
+  var numValidator = false;
+
+  function validator (){
+    // var valid = false;
+    // for(i=0; i < lcLetters.length; i++){
+    //   if (password.includes(lcLetters[i])){
+    //     valid = true;
+    //   }
+    // }
+    // console.log(`validator found ${valid}`);
+    if(lowercase === true){
+      
+      for(i=0; i < lcLetters.length; i++){
+        if (password.includes(lcLetters[i])){
+          lcValidator = true;
+        }
+      }
+      console.log(`lcValidator says ${lcValidator}`);
+    }
+
+    if(uppercase === true){
+      
+      for(i=0; i < ucLetters.length; i++){
+        if (password.includes(ucLetters[i])){
+          ucValidator = true;
+        }
+      }
+      console.log(`ucValidator says ${ucValidator}`);
+    }
+
+    if(numeric === true){
+      
+      for(i=0; i < numerics.length; i++){
+        if (password.includes(numerics[i])){
+          numValidator = true;
+        }
+      }
+      console.log(`numValidator says ${numValidator}`);
+    }
+
+    if(special === true){
+      
+      for(i=0; i < specChars.length; i++){
+        if (password.includes(specChars[i])){
+          spValidator = true;
+        }
+      }
+      console.log(`spValidator says ${spValidator}`);
+    }
+    if (lcValidator && ucValidator && numValidator && spValidator){
+      console.log(`lcV: ${lcValidator}, ucV: ${ucValidator}, numV: ${numValidator}, spV: ${spValidator}`);
+      console.log(`Password of ${password} is valid`);
+      passwordValid = true;
+      
+    } else {
+      console.log(`NOT VALID`);
+      
+  }
+  }
+
+    
+    var passwordValid = false;
+    console.log(`starting loop`);
+    do{
+      generatePassword();
+      validator();
+    }
+    while (passwordValid == false);
+      
+
+}
+test();
