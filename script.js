@@ -7,7 +7,7 @@ function writePassword() {
   // establish password attributes (blank)
   var pwAttributes = {
     charTypes: '',
-    pwLength: 0
+    pwLength: 8
   }
 
   // ALERT to prep for answering questions
@@ -30,19 +30,19 @@ function writePassword() {
 
   // CONFIRM to ask if they want lowercase
   var lowercase = confirm(`Do you want lowercase characters in your password?`);
-  console.log(lowercase);
+  
 
   // CONFIRM to ask if they want uppercase
   var uppercase = confirm(`Do you want uppercase characters in your password?`);
-  console.log(uppercase);
+ 
 
   // CONFIRM to ask if they want numeric
   var numeric = confirm(`Do you want numeric characters in your password?`);
-  console.log(numeric);
+ 
 
   // CONFIRM to ask if they want special
   var special = confirm(`Do you want special characters in your password?`);
-  console.log(special);
+  
 
   // Establish character type values
   var lcLetters = `abcdefghijklmnopqrstuvwxyz`;
@@ -71,11 +71,84 @@ function writePassword() {
   // set password variable to blank
    var password = ``;
 
+  // validator variables
+  var passwordValid = true;  
+  var spValidator = false;
+  var lcValidator = false;
+  var ucValidator = false;
+  var numValidator = false;
+
   //  for function to figure out password
    function generatePassword(){
-    for (var i = 0; i < pwAttributes.pwLength; i++){
-      password += pwAttributes.charTypes[Math.floor(Math.random() * pwAttributes.charTypes.length)];
-    }
+
+      // do/while statement to generate password and validate charTypes are all used
+      do {
+  
+        // for loop to randomly select password characters based on length and charTypes selected in prompts
+        for (var i = 0; i < pwAttributes.pwLength; i++){
+          password += pwAttributes.charTypes[Math.floor(Math.random() * pwAttributes.charTypes.length)];
+        }
+        
+        // debug console logging
+        console.log(password + ` -- is set after for statement`);
+        
+        // reset passwordValid
+        passwordValid = true;
+
+        // Validator -- each validator initially set to false, turned true upon passing condition
+
+        if(lowercase === true){
+          for(i=0; i < lcLetters.length; i++){
+            if (password.includes(lcLetters[i])){
+              lcValidator = true;
+              console.log(`lcValidator is set to ${lcValidator}`);
+            }
+          }
+        } 
+        
+        if (uppercase === true){
+          for(i=0; i < ucLetters.length; i++){
+            if (password.includes(ucLetters[i])){
+              ucValidator = true;
+              console.log(`ucValidator is set to ${ucValidator}`);
+            } 
+          }
+        } 
+      
+        if (numeric === true){
+          for(i=0; i < numerics.length; i++){
+            if (password.includes(numerics[i])){
+              numValidator = true;
+              console.log(`numValidator is set to ${numValidator}`);
+            } 
+          }
+        } 
+      
+        if (special === true){
+          for(i=0; i < specChars.length; i++){
+            if (password.includes(specChars[i])){
+              spValidator = true;
+              console.log(`spValidator is set to ${spValidator}`);
+            } 
+          }
+        }
+
+        // Valdiation that if charType is selected && charType validation did NOT pass, to set passwordValid to false for another gen password loop
+        if (lowercase === true && lcValidator === false){
+          passwordValid = false; password = '';
+        }
+        if (uppercase === true && ucValidator === false){
+          passwordValid = false; password = '';
+        }
+        if (numeric === true && numValidator === false){
+          passwordValid = false; password = '';
+        }
+        if (special === true && spValidator == false){
+          passwordValid = false; password = '';
+        }
+
+        console.log(`end of logic with password set to ${password} and passwordValid set to ${passwordValid}`)
+      } while (passwordValid === false);
   }
 
   // run generatePassword function (inside button click, so will not run without writePassword function)
@@ -84,11 +157,13 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   // give password in box on webpage
-  passwordText.value = password;
+    passwordText.value = password;
 
-  console.log(pwAttributes.charTypes);
-  console.log(pwAttributes.pwLength);
-  console.log(password);
+    // console log attributes and password for visual confirmation 
+    console.log(pwAttributes.charTypes);
+    console.log(pwAttributes.pwLength);
+    console.log(password);
+
 
 }
 
@@ -199,4 +274,4 @@ function test(){
       
 
 }
-test();
+// test();
