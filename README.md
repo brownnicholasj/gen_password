@@ -16,31 +16,31 @@ This is a random password generation program that takes feedback from the user a
 
 ## Usage
 As a user, I will go to the webesite and click the 'Generate Password' button that has a red background.<br>
-![alt text](./assets/images/useage01.jpg)<br><br>
+![alt text](./assets/images/useage01.JPG)<br><br>
 
 A series of Prompts and/or Confirm boxes will appear to get user input on the parameters of the password to be generated.<br>
-![alt text](./assets/images/useage02.jpg)<br><br>
+![alt text](./assets/images/useage02.JPG)<br><br>
 
 After responding to the prompts/confirm boxes, the password will generate inside the dotted box, adhering to the users parameters.<br>
-![alt text](./assets/images/useage03.jpg)<br><br>
+![alt text](./assets/images/useage03.JPG)<br><br>
 
 From here, the user can copy the password to use or click the generate password button to redo the fucnction.
 
 
 ## Features
 The first Alert box notifies users to provide criteria for their password<br>
-![alt text](./assets/images/features01.jpg)<br><br>
+![alt text](./assets/images/features01.JPG)<br><br>
 
 The next box asks the user to select their password length by inputing a number between 8 and 128 (with default value of 8).
 - If the user selects a number less than 8 an alert pops up 
-![alt text](./assets/images/features02.jpg)
+![alt text](./assets/images/features02.JPG)
 - If the user selects a number greater than 128 an alert pops up
-![alt text](./assets/images/features03.jpg)
+![alt text](./assets/images/features03.JPG)
 <br><br>
 
 The next series (4) confirm boxes ask the user if they would like to have a set of character types in their password (lowercase, uppercase, numeric, special characters).
 - If the user selects/answers false on all four boxes an alert pops up
-![alt text](./assets/images/features04.jpg)
+![alt text](./assets/images/features04.JPG)
 
 Validator
 - logic created to ensure that each Character Type selected, is actually used.
@@ -51,7 +51,7 @@ Validator
             - is any character in the character type used in the password?
                 - if false, password invalid, re-generate password with same attributes provided in the prompts
     - repeat for all 4 character types
-    ![alt text](./assets/images/features05.jpg)
+    ![alt text](./assets/images/features05.JPG)
 
 
 ## Tests
